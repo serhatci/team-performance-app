@@ -1,4 +1,6 @@
 <script>
+import {mapActions, mapState} from 'vuex'
+
 export default {
   name: 'Survey',
   data() {
@@ -9,8 +11,19 @@ export default {
       error: false,
     }
   },
+  computed: {
+    ...mapState(['votes']),
+  },
   methods: {
-    send() {},
+    ...mapActions(['addNewVotes']),
+
+    send(e) {
+      e.preventDefault()
+
+      const result = [parseInt(this.answer1), parseInt(this.answer2), parseInt(this.answer3)]
+
+      this.addNewVotes(result)
+    },
   },
 }
 </script>
@@ -31,7 +44,7 @@ form(@submit='send')
             .d-flex.justify-content-between
               p Disagree
               p Agree
-            input#question1.form-range(type='range', min='0', max='100', step='1', v-model='value')
+            input#question1.form-range(type='range', min='0', max='100', step='1', v-model='answer1')
           .col-3.col-sm-2
             p.text-nowrap {{answer1}}
             .mb-3
@@ -42,7 +55,7 @@ form(@submit='send')
             .d-flex.justify-content-between
               p Disagree
               p Agree
-            input#question2.form-range(type='range', min='0', max='100', step='1', v-model='value')
+            input#question2.form-range(type='range', min='0', max='100', step='1', v-model='answer2')
           .col-3.col-sm-2
             p.text-nowrap {{answer2}}
         label.mt-4.fw-bold.form-label(for='question3')
@@ -52,12 +65,12 @@ form(@submit='send')
             .d-flex.justify-content-between
               p Disagree
               p Agree
-            input#question3.form-range(type='range', min='0', max='100', step='1', v-model='value')
+            input#question3.form-range(type='range', min='0', max='100', step='1', v-model='answer3')
           .col-3.col-sm-2
             p.text-nowrap {{answer3}}
       button.btn.btn-primary(type='submit') Submit
     .card-footer.text-muted
-      p {{results}}
+      p {{votes}}
 </template>
 
 <style lang="scss" scoped>
