@@ -36,7 +36,7 @@ nav.navbar.navbar-expand-md.navbar-light.px-3.border-bottom.shadow-sm(aria-label
           a.btn.btn-danger.m-1(@click='resetVotes', role='button') Reset Survey
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 nav {
   background-color: rgb(250, 250, 250);
 }

@@ -63,7 +63,7 @@ form
       p Serhat Ciftci @2021
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .card {
   max-width: 40rem;
 }
