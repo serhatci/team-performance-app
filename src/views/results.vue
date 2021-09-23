@@ -95,6 +95,48 @@ export default {
         .px-5
           h6.text-center TEAM OVERVIEW
           pie-chart(:data="getPieChartData(1)",:colors="['Lime','PaleGreen', 'DarkSalmon','Red']",:messages="{empty: 'No data'}",suffix="%")
+
+      hr
+      h4.mb-4 Question 2
+      h6 2) It is safe to take risk on this team
+      p.ms-0.ms-sm-4 Your team overal {{getOpinion(2)}} that taking risk is welcomed in the team
+      .row.mb-5.mx-0.mx-sm-2
+        .col-12.col-md-8
+          h6.text-center AVERAGE
+          .d-flex.justify-content-between
+            p Agree
+            p.text-primary.fw-bold {{getAverage(2)}}
+            p Disagree
+          input#question3.form-range(type='range', min='0', max='100', step='1', :value='getAverage(2)', disabled)
+      .row
+        .col-12.col-lg-8.mb-5
+          h6.text-center INDIVIDUAL RESULTS
+          column-chart(xtitle="Participants",:data='getColumnChartData(2)',:min="0", :max="100")
+        .col-12.col-lg-4.mb-5
+          .px-5
+            h6.text-center TEAM OVERVIEW
+            pie-chart(:data="getPieChartData(2)",:colors="['Lime','PaleGreen', 'DarkSalmon','Red']",:messages="{empty: 'No data'}",suffix="%")
+
+      hr
+      h4.mb-4 Question 3
+      h6 3) Working with members of this team, my unique skills and talents are valued and utilized
+      p.ms-0.ms-sm-4 Your team overal {{getOpinion(3)}} that their talents are appreciated in the team
+      .row.mb-5.mx-0.mx-sm-2
+        .col-12.col-md-8
+          h6.text-center AVERAGE
+          .d-flex.justify-content-between
+            p Agree
+            p.text-primary.fw-bold {{getAverage(3)}}
+            p Disagree
+          input#question3.form-range(type='range', min='0', max='100', step='1', :value='getAverage(3)', disabled)
+      .row
+        .col-12.col-lg-8.mb-5
+          h6.text-center INDIVIDUAL RESULTS
+          column-chart(xtitle="Participants",:data='getColumnChartData(3)',:min="0", :max="100")
+        .col-12.col-lg-4.mb-5
+          .px-5
+            h6.text-center TEAM OVERVIEW
+            pie-chart(:data="getPieChartData(3)",:colors="['Lime','PaleGreen', 'DarkSalmon','Red']",:messages="{empty: 'No data'}",suffix="%")
 </template>
 
 <style scoped>
