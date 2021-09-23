@@ -21,6 +21,15 @@ export default {
       return Math.round(this.votes.reduce((acc, cur) => acc + cur[questionNo - 1], 0) / this.votes.length)
     },
 
+    getOpinion(questionNo) {
+      const average = this.getAverage(questionNo)
+
+      if (average < 25) return 'strongly agree'
+      if (average >= 25 && average < 50) return 'agree'
+      if (average >= 50 && average < 75) return 'disagree'
+      return 'strongly disagree'
+    },
+
     getColumnChartData(questionNo) {
       let data = []
       let participantNo = 1
@@ -46,10 +55,10 @@ export default {
 
     getPieChartData(questionNo) {
       return [
-        ['Strongly Agree (<25)', this.getClusterAverage(0, 25, questionNo)],
-        ['Agree (25-49)', this.getClusterAverage(25, 50, questionNo)],
-        ['Disagree (50-74)', this.getClusterAverage(50, 75, questionNo)],
-        ['Strongly Disagree (>75)', this.getClusterAverage(75, 101, questionNo)],
+        ['Strongly Agree', this.getClusterAverage(0, 25, questionNo)],
+        ['Agree', this.getClusterAverage(25, 50, questionNo)],
+        ['Disagree', this.getClusterAverage(50, 75, questionNo)],
+        ['Strongly Disagree', this.getClusterAverage(75, 101, questionNo)],
       ]
     },
   },
@@ -69,7 +78,7 @@ export default {
   section.mt-2.mx-3.mx-sm-5(v-else)
     h4.mb-4 Question 1
     h6 1) If you make a mistake on this team, it is often holds against you
-    p.ms-0.ms-sm-4 Explanationsdfsdfsdfsdfsf
+    p.ms-0.ms-sm-4 Your team overal {{getOpinion(1)}} that making mistake is not welcomed in the team
     .row.mb-5.mx-0.mx-sm-2
       .col-12.col-md-8
         h6.text-center AVERAGE
@@ -85,7 +94,7 @@ export default {
       .col-12.col-lg-4.mb-5
         .px-5
           h6.text-center TEAM OVERVIEW
-          pie-chart(:data="getPieChartData(1)",:colors="['Lime','PaleGreen', 'DarkSalmon','Red']",:messages="{empty: 'No data'}")
+          pie-chart(:data="getPieChartData(1)",:colors="['Lime','PaleGreen', 'DarkSalmon','Red']",:messages="{empty: 'No data'}",suffix="%")
 </template>
 
 <style scoped>
