@@ -5,8 +5,16 @@ export default {
   name: 'Results',
   computed: {
     ...mapState(['votes']),
+
+    numberOfParticipants() {
+      return this.votes.length
+    },
   },
   methods: {
+    getAverage(questionNo) {
+      return Math.round(this.votes.reduce((acc, cur) => acc + cur[questionNo - 1], 0) / this.votes.length)
+    },
+
     getData(questionNo) {
       let data = []
       let participantNo = 1
@@ -26,6 +34,7 @@ export default {
 <template lang="pug">
 #results.m-auto.shadow-lg
   h2.text-center.py-3 Survey Results
+  p.text-center (Number of Participants: {{numberOfParticipants}})
   hr.m-0
   section.mt-2.mx-3.mx-sm-5
     h4.mb-4 Question 1
@@ -36,9 +45,9 @@ export default {
         h6.text-center AVERAGE
         .d-flex.justify-content-between
           p Agree
-          p.text-primary.fw-bold
+          p.text-primary.fw-bold {{getAverage(1)}}
           p Disagree
-        input#question3.form-range(type='range', min='0', max='100', step='1', :value='average', disabled)
+        input#question3.form-range(type='range', min='0', max='100', step='1', :value='getAverage(1)', disabled)
     .row
       .col-12.col-md-8.mb-5
         h6.text-center INDIVIDUAL RESULTS
