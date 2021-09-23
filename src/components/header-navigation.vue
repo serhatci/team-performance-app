@@ -1,6 +1,14 @@
 <script>
 export default {
   name: 'HeaderNavigation',
+
+  methods: {
+    resetVotes() {
+      localStorage.removeItem('vuex')
+
+      this.$router.push('/')
+    },
+  },
 }
 </script>
 
@@ -8,7 +16,7 @@ export default {
 nav.navbar.navbar-expand-md.navbar-light.px-3.border-bottom.shadow-sm(aria-label='Top sticky navigation bar')
   .container-fluid
     a.d-block.navbar-brand(href='/')
-      h4 Team Performance App
+      h5 Team Performance App
     button.navbar-toggler.collapsed(
       type='button',
       data-bs-toggle='collapse',
@@ -23,10 +31,12 @@ nav.navbar.navbar-expand-md.navbar-light.px-3.border-bottom.shadow-sm(aria-label
         li.nav-item
           a.btn.btn-primary.m-1(href='/', role='button') Survey
         li.nav-item
-          a.btn.btn-danger.m-1(href='/results', role='button') Results
+          a.btn.btn-success.m-1(href='/results', role='button') Results
+        li.nav-item
+          a.btn.btn-danger.m-1(@click='resetVotes', role='button') Reset Survey
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 nav {
   background-color: rgb(250, 250, 250);
 }

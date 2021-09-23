@@ -19,7 +19,7 @@ export default {
         router-view
 </template>
 
-<style lang="scss">
+<style>
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css');
 #app,
 body,
