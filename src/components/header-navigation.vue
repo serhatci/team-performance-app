@@ -8,7 +8,7 @@ export default {
 nav.navbar.navbar-expand-md.navbar-light.px-3.border-bottom.shadow-sm(aria-label='Top sticky navigation bar')
   .container-fluid
     a.d-block.navbar-brand(href='/')
-      h4 Team Performance App
+      h5 Team Performance App
     button.navbar-toggler.collapsed(
       type='button',
       data-bs-toggle='collapse',
