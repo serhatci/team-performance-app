@@ -78,7 +78,7 @@ export default {
   section.mt-2.mx-3.mx-sm-5(v-else)
     h4.mb-4 Question 1
     h6 1) If you make a mistake on this team, it is often holds against you
-    p.ms-0.ms-sm-4 Your team overal {{getOpinion(1)}} that making mistake is not welcomed in the team
+    p.mb-5.ms-0.ms-sm-4 Your team overal {{getOpinion(1)}} that making mistake is not welcomed in the team
     .row.mb-5.mx-0.mx-sm-2
       .col-12.col-md-8
         h6.text-center AVERAGE
@@ -99,7 +99,7 @@ export default {
       hr
       h4.mb-4 Question 2
       h6 2) It is safe to take risk on this team
-      p.ms-0.ms-sm-4 Your team overal {{getOpinion(2)}} that taking risk is welcomed in the team
+      p.mb-5.ms-0.ms-sm-4 Your team overal {{getOpinion(2)}} that taking risk is welcomed in the team
       .row.mb-5.mx-0.mx-sm-2
         .col-12.col-md-8
           h6.text-center AVERAGE
@@ -120,7 +120,7 @@ export default {
       hr
       h4.mb-4 Question 3
       h6 3) Working with members of this team, my unique skills and talents are valued and utilized
-      p.ms-0.ms-sm-4 Your team overal {{getOpinion(3)}} that their talents are appreciated in the team
+      p.mb-5.ms-0.ms-sm-4 Your team overal {{getOpinion(3)}} that their talents are appreciated in the team
       .row.mb-5.mx-0.mx-sm-2
         .col-12.col-md-8
           h6.text-center AVERAGE
