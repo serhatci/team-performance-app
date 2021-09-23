@@ -1,5 +1,5 @@
 <script>
-import {mapActions, mapState} from 'vuex'
+import {mapActions} from 'vuex'
 
 export default {
   name: 'Survey',
@@ -10,9 +10,6 @@ export default {
       answer3: 0,
       isSubmitted: false,
     }
-  },
-  computed: {
-    ...mapState(['votes']),
   },
   methods: {
     ...mapActions(['addNewVotes']),
@@ -40,29 +37,30 @@ form
             label.fw-bold.form-label(for='question1')
               | 1) If you make a mistake on this team, it is often holds against you
             .d-flex.justify-content-between
-              p Disagree
-              p.text-primary {{answer1}}
-              p Agree
+              p Strongly Agree
+              p.text-primary.fw-bold {{answer1}}
+              p Strongly Disagree
             input#question1.form-range(type='range', min='0', max='100', step='1', v-model='answer1')
             label.mt-4.fw-bold.form-label(for='question2')
               | 2) It is safe to take risk on this team
             .d-flex.justify-content-between
-              p Disagree
-              p.text-primary {{answer2}}
-              p Agree
+              p Strongly Agree
+              p.text-primary.fw-bold {{answer2}}
+              p Strongly Disagree
             input#question2.form-range(type='range', min='0', max='100', step='1', v-model='answer2')
             label.mt-4.fw-bold.form-label(for='question3')
               | 3) Working with members of this team, my unique skills and talents are valued and utilized
             .d-flex.justify-content-between
-              p Disagree
-              p.text-primary {{answer3}}
-              p Agree
+              p Strongly Agree
+              p.text-primary.fw-bold {{answer3}}
+              p Strongly Disagree
             input#question3.form-range(type='range', min='0', max='100', step='1', v-model='answer3')
-            .btn.btn-primary(v-if='!isSubmitted',@click='isSubmitted=true') Submit
-            button.btn.btn-success(v-if='isSubmitted',@click='send') Do you Confirm your results?
-            button.btn.btn-warning.ms-3(v-if='isSubmitted',@click='isSubmitted=false') Cancel
+            .mt-2
+              .btn.btn-primary.fw-bold(v-if='!isSubmitted',@click='isSubmitted=true') Submit
+              button.btn.btn-success(v-if='isSubmitted',@click='send') Do you Confirm your results?
+              button.btn.btn-warning.ms-3(v-if='isSubmitted',@click='isSubmitted=false') Cancel
     .card-footer.text-muted
-      p {{votes}}
+      p Serhat Ciftci @2021
 </template>
 
 <style lang="scss" scoped>
