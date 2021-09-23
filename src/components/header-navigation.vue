@@ -1,6 +1,14 @@
 <script>
 export default {
   name: 'HeaderNavigation',
+
+  methods: {
+    resetVotes() {
+      localStorage.removeItem('vuex')
+
+      this.$router.push('/')
+    },
+  },
 }
 </script>
 
@@ -23,7 +31,9 @@ nav.navbar.navbar-expand-md.navbar-light.px-3.border-bottom.shadow-sm(aria-label
         li.nav-item
           a.btn.btn-primary.m-1(href='/', role='button') Survey
         li.nav-item
-          a.btn.btn-danger.m-1(href='/results', role='button') Results
+          a.btn.btn-success.m-1(href='/results', role='button') Results
+        li.nav-item
+          a.btn.btn-danger.m-1(@click='resetVotes', role='button') Reset Survey
 </template>
 
 <style lang="scss" scoped>
