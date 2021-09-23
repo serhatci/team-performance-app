@@ -30,23 +30,25 @@ export default {
         participantNo++
       }
 
-      console.log(data)
       return data
     },
 
     getClusterAverage(start, end, questionNo) {
-      const questionValues = this.votes.map(item => item[questionNo - 1])
+      const clusterValues = this.votes.filter(item => item[questionNo - 1] >= start && item[questionNo - 1] < end)
+      console.log(clusterValues)
 
-      const clusterValues = questionValues.filter(item => item >= start && item < end)
+      if (clusterValues.length === 0) return 0
 
-      return Math.round(clusterValues.reduce((acc, cur) => acc + cur) / clusterValues.length)
+      const a = Math.floor((clusterValues.length / this.votes.length) * 100)
+      console.log(a)
+      return a
     },
 
     getPieChartData(questionNo) {
       return [
         ['Strongly Agree (<25)', this.getClusterAverage(0, 25, questionNo)],
-        ['Agree (25-50)', this.getClusterAverage(25, 50, questionNo)],
-        ['Disagree (50-75)', this.getClusterAverage(50, 75, questionNo)],
+        ['Agree (25-49)', this.getClusterAverage(25, 50, questionNo)],
+        ['Disagree (50-74)', this.getClusterAverage(50, 75, questionNo)],
         ['Strongly Disagree (>75)', this.getClusterAverage(75, 101, questionNo)],
       ]
     },
@@ -83,7 +85,7 @@ export default {
       .col-12.col-lg-4.mb-5
         .px-5
           h6.text-center TEAM OVERVIEW
-          pie-chart(:data="getPieChartData(1)",:colors="['LimeGreen', 'Lime','Crimson','Red']",:messages="{empty: 'No data'}")
+          pie-chart(:data="getPieChartData(1)",:colors="['Lime','PaleGreen', 'DarkSalmon','Red']",:messages="{empty: 'No data'}")
 </template>
 
 <style scoped>
