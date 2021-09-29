@@ -1,5 +1,5 @@
 <script>
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Results',
@@ -44,12 +44,10 @@ export default {
 
     getClusterAverage(start, end, questionNo) {
       const clusterValues = this.votes.filter(item => item[questionNo - 1] >= start && item[questionNo - 1] < end)
-      console.log(clusterValues)
 
       if (clusterValues.length === 0) return 0
 
       const a = Math.floor((clusterValues.length / this.votes.length) * 100)
-      console.log(a)
       return a
     },
 
@@ -68,7 +66,7 @@ export default {
 <template lang="pug">
 #results.m-auto.shadow-lg
   h2.text-center.py-3 Survey Results
-  p.text-center (Number of Participants: {{numberOfParticipants}})
+  p.text-center (Number of Participants: {{ numberOfParticipants }})
   hr.m-0
   section(v-if='!isResultAvailable')
     .row.mt-3
@@ -78,65 +76,80 @@ export default {
   section.mt-2.mx-3.mx-sm-5(v-else)
     h4.mb-4 Question 1
     h6 1) If you make a mistake on this team, it is often holds against you
-    p.mb-5.ms-0.ms-sm-4 Your team overal {{getOpinion(1)}} that making mistake is not welcomed in the team
+    p.mb-5.ms-0.ms-sm-4 Your team overal {{ getOpinion(1) }} that making mistake is not welcomed in the team
     .row.mb-5.mx-0.mx-sm-2
       .col-12.col-md-8
         h6.text-center AVERAGE
         .d-flex.justify-content-between
           p Agree
-          p.text-primary.fw-bold {{getAverage(1)}}
+          p.text-primary.fw-bold {{ getAverage(1) }}
           p Disagree
         input#question3.form-range(type='range', min='0', max='100', step='1', :value='getAverage(1)', disabled)
     .row
       .col-12.col-lg-8.mb-5
         h6.text-center INDIVIDUAL RESULTS
-        column-chart(xtitle="Participants",:data='getColumnChartData(1)',:min="0", :max="100")
+        column-chart(xtitle='Participants', :data='getColumnChartData(1)', :min='0', :max='100')
       .col-12.col-lg-4.mb-5
         .px-5
           h6.text-center TEAM OVERVIEW
-          pie-chart(:data="getPieChartData(1)",:colors="['Lime','PaleGreen', 'DarkSalmon','Red']",:messages="{empty: 'No data'}",suffix="%")
+          pie-chart(
+            :data='getPieChartData(1)',
+            :colors='["Lime", "PaleGreen", "DarkSalmon", "Red"]',
+            :messages='{ empty: "No data" }',
+            suffix='%'
+          )
 
       hr
       h4.mb-4 Question 2
       h6 2) It is safe to take risk on this team
-      p.mb-5.ms-0.ms-sm-4 Your team overal {{getOpinion(2)}} that taking risk is welcomed in the team
+      p.mb-5.ms-0.ms-sm-4 Your team overal {{ getOpinion(2) }} that taking risk is welcomed in the team
       .row.mb-5.mx-0.mx-sm-2
         .col-12.col-md-8
           h6.text-center AVERAGE
           .d-flex.justify-content-between
             p Agree
-            p.text-primary.fw-bold {{getAverage(2)}}
+            p.text-primary.fw-bold {{ getAverage(2) }}
             p Disagree
           input#question3.form-range(type='range', min='0', max='100', step='1', :value='getAverage(2)', disabled)
       .row
         .col-12.col-lg-8.mb-5
           h6.text-center INDIVIDUAL RESULTS
-          column-chart(xtitle="Participants",:data='getColumnChartData(2)',:min="0", :max="100")
+          column-chart(xtitle='Participants', :data='getColumnChartData(2)', :min='0', :max='100')
         .col-12.col-lg-4.mb-5
           .px-5
             h6.text-center TEAM OVERVIEW
-            pie-chart(:data="getPieChartData(2)",:colors="['Lime','PaleGreen', 'DarkSalmon','Red']",:messages="{empty: 'No data'}",suffix="%")
+            pie-chart(
+              :data='getPieChartData(2)',
+              :colors='["Lime", "PaleGreen", "DarkSalmon", "Red"]',
+              :messages='{ empty: "No data" }',
+              suffix='%'
+            )
 
       hr
       h4.mb-4 Question 3
       h6 3) Working with members of this team, my unique skills and talents are valued and utilized
-      p.mb-5.ms-0.ms-sm-4 Your team overal {{getOpinion(3)}} that their talents are appreciated in the team
+      p.mb-5.ms-0.ms-sm-4 Your team overal {{ getOpinion(3) }} that their talents are appreciated in the team
       .row.mb-5.mx-0.mx-sm-2
         .col-12.col-md-8
           h6.text-center AVERAGE
           .d-flex.justify-content-between
             p Agree
-            p.text-primary.fw-bold {{getAverage(3)}}
+            p.text-primary.fw-bold {{ getAverage(3) }}
             p Disagree
           input#question3.form-range(type='range', min='0', max='100', step='1', :value='getAverage(3)', disabled)
       .row
         .col-12.col-lg-8.mb-5
           h6.text-center INDIVIDUAL RESULTS
-          column-chart(xtitle="Participants",:data='getColumnChartData(3)',:min="0", :max="100")
+          column-chart(xtitle='Participants', :data='getColumnChartData(3)', :min='0', :max='100')
         .col-12.col-lg-4.mb-5
           .px-5
             h6.text-center TEAM OVERVIEW
-            pie-chart(:data="getPieChartData(3)",:colors="['Lime','PaleGreen', 'DarkSalmon','Red']",:messages="{empty: 'No data'}",suffix="%")
+            pie-chart(
+              :data='getPieChartData(3)',
+              :colors='["Lime", "PaleGreen", "DarkSalmon", "Red"]',
+              :messages='{ empty: "No data" }',
+              suffix='%'
+            )
 </template>
 
 <style scoped>
