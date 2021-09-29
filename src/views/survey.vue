@@ -30,7 +30,11 @@ form
     .card-header.fs-5
       | Survey
     .card-body.text-start
-      p Psychological safety is a critical component of high-performing teams. This survey is aimed to collect inputs from each member of a team and calculate the psychological safety index. All participants will be kept anonymous. Please carefully read the questions and provide your answer on a scale between 0-100.
+      p
+        | Psychological safety is a critical component of high-performing teams.
+        | survey is aimed to collect inputs from each member of a team and calculate
+        | the psychological safety index. All participants will be kept anonymous.
+        | Please carefully read the questions and provide your answer on a scale between 0-100.
       .mb-3.mt-5
         .row
           .col-12.col-sm-10.m-auto
